@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Containers\Vendor\OtpKey\Classes;
+namespace App\Containers\Vendor\Mfa\Classes;
 
 use BaconQrCode\Renderer\Color\Rgb;
 use BaconQrCode\Renderer\Image\SvgImageBackEnd;

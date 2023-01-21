@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Vendor\OtpKey\UI\API\Requests;
+namespace App\Containers\Vendor\Mfa\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
@@ -35,7 +35,8 @@ class CreateOtpKeyRequest extends Request
     public function rules(): array
     {
         return [
-            'user_id' => 'required'
+            'id' => 'required',
+            'class'=> 'in_array:'. config('vendor-Mfa.classes'),
         ];
     }
 

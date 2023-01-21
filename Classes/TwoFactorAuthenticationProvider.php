@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Containers\Vendor\OtpKey\Classes;
+namespace App\Containers\Vendor\Mfa\Classes;
 use PragmaRX\Google2FA\Google2FA;
 use Illuminate\Support\Collection;
 use BaconQrCode\Renderer\Color\Rgb;
@@ -32,13 +32,44 @@ class TwoFactorAuthenticationProvider
         })->toArray();
     }
 
-    public function qrCodeUrl(string $companyName, string $companyEmail, string $secret)
+    public function qrCodeUrl( $Name,  $Email,  $secret)
     {
-        return $this->engine->getQRCodeUrl($companyName, $companyEmail, $secret);
+          $Name = trim($Name);
+        return $this->engine->getQRCodeUrl($Name, $Email, $secret);
     }
 
-    public function verify(string $secret, string $code)
+    public function verify(string $secret, string $code, $window = Null)
     {
-        return $this->engine->verifyKey($secret, $code);
+        return $this->engine->verifyKey($secret, $code, $window);
     }
+
+      /**
+       * Find a valid One Time Password.
+       *
+       * @param string $secret
+       * @return bool|int
+       */
+      public function GenerateValidOTP($secret)
+      {
+
+            $startingTimestamp = $this->makeCurretTimestamp();
+            return $this->engine->oathTotp($secret, $startingTimestamp);
+
+      }
+
+      /**
+       * Get/use a starting timestamp for key verification.
+       *
+       * @param string|int|null $timestamp
+       *
+       * @return int
+       */
+      protected function makeCurretTimestamp($timestamp = null)
+      {
+            if (is_null($timestamp)) {
+                  return $this->engine->getTimestamp();
+            }
+
+            return (int)$timestamp;
+      }
 }

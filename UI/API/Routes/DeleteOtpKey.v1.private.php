@@ -19,10 +19,10 @@
 }
  */
 
-use App\Containers\Vendor\OtpKey\UI\API\Controllers\Controller;
+use App\Containers\Vendor\Mfa\UI\API\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
-Route::delete('otpkeys/{id}', [Controller::class, 'deleteOtpKey'])
+Route::delete('otpkeys/{id}/{class?}', [Controller::class, 'DeleteMfa'])
     ->name('api_otpkey_delete_otp_key')
-    ->middleware(['auth:api']);
+    ->middleware([config('vendor-Mfa.auth_middleware')]);
 

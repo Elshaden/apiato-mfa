@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Containers\Vendor\OtpKey\UI\API\Requests;
+namespace App\Containers\Vendor\Mfa\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
-class FindOtpKeyByIdRequest extends Request
+class GenerateOtpCodeRequest extends Request
 {
     /**
      * Define which Roles and/or Permissions has access to this request.
@@ -18,7 +18,7 @@ class FindOtpKeyByIdRequest extends Request
      * Id's that needs decoding before applying the validation rules.
      */
     protected array $decode = [
-      //  'id',
+        // 'id',
     ];
 
     /**
@@ -27,6 +27,7 @@ class FindOtpKeyByIdRequest extends Request
      */
     protected array $urlParameters = [
         'id',
+        'class',
     ];
 
     /**
@@ -35,7 +36,7 @@ class FindOtpKeyByIdRequest extends Request
     public function rules(): array
     {
         return [
-            'id' => 'required'
+          'id' => 'required'
         ];
     }
 

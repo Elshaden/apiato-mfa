@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Vendor\OtpKey\Data\Repositories;
+namespace App\Containers\Vendor\Mfa\Data\Repositories;
 
 use App\Ship\Parents\Repositories\Repository;
 

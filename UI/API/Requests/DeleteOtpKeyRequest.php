@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Vendor\OtpKey\UI\API\Requests;
+namespace App\Containers\Vendor\Mfa\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
@@ -18,7 +18,7 @@ class DeleteOtpKeyRequest extends Request
      * Id's that needs decoding before applying the validation rules.
      */
     protected array $decode = [
-        'id',
+//        'id',
     ];
 
     /**
@@ -27,6 +27,7 @@ class DeleteOtpKeyRequest extends Request
      */
     protected array $urlParameters = [
         'id',
+          'class',
     ];
 
     /**

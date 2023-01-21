@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Containers\Vendor\OtpKey\Tasks;
+namespace App\Containers\Vendor\Mfa\Tasks;
 
-use App\Containers\Vendor\OtpKey\Data\Repositories\OtpKeyRepository;
+use App\Containers\Vendor\Mfa\Data\Repositories\OtpKeyRepository;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;

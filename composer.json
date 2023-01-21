@@ -24,7 +24,7 @@
     "extra": {
         "apiato": {
             "container": {
-                "name": "OtpKey"
+                "name": "Mfa"
             }
         }
     }

@@ -22,7 +22,8 @@
 use App\Containers\Vendor\Mfa\UI\API\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
-Route::post('mfakeys', [Controller::class, 'createOtpKey'])
-      ->name('api_otpkey_create_otp_key')
-      ->middleware([config('vendor-Mfa.auth_middleware')]);
+
+Route::get('generate-pin/{id}/{class?}', [Controller::class, 'GenerateOtpCode'])
+    ->name('api_otpkey_generate_otp_code')
+  ->middleware([config('vendor-Mfa.auth_middleware')]);
 

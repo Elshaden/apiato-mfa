@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Containers\Vendor\OtpKey\Providers;
+namespace App\Containers\Vendor\Mfa\Providers;
 
-use App\Ship\Parents\Providers\MainProvider;
+use App\Ship\Parents\Providers\MainServiceProvider as ParentMainServiceProvider;
 
 /**
  * The Main Service Provider of this container, it will be automatically registered in the framework.
  */
-class MainServiceProvider extends MainProvider
+class MainServiceProvider extends ParentMainServiceProvider
 {
     /**
      * Container Service Providers.

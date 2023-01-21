@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Vendor\OtpKey\UI\API\Requests;
+namespace App\Containers\Vendor\Mfa\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 

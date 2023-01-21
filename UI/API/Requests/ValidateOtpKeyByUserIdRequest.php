@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Vendor\OtpKey\UI\API\Requests;
+namespace App\Containers\Vendor\Mfa\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
@@ -36,7 +36,9 @@ class ValidateOtpKeyByUserIdRequest extends Request
     {
         return [
             'id' => 'required',
-            'pin'=>'required|numeric|digits:6'
+            'pin'=>'required|numeric|digits:6',
+            'class'=> 'in_array:'. config('vendor-Mfa.classes'),
+            'minutes' => 'sometimes|integer|max:5',
         ];
     }
 
