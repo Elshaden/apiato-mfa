@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @apiGroup           OtpKey
- * @apiName            deleteOtpKey
+ * @apiGroup           MfaKey
+ * @apiName            updateMfaKey
  *
- * @api                {DELETE} /v1/otpkeys/:id Endpoint title here..
+ * @api                {PATCH} /v1/otpkeys/:id Endpoint title here..
  * @apiDescription     Endpoint description here..
  *
  * @apiVersion         1.0.0
@@ -22,7 +22,7 @@
 use App\Containers\Vendor\Mfa\UI\API\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
-Route::delete('otpkeys/{id}/{class?}', [Controller::class, 'DeleteMfa'])
-    ->name('api_otpkey_delete_otp_key')
-    ->middleware([config('vendor-Mfa.auth_middleware')]);
+Route::patch('mfakeys/{id}/{class?}', [Controller::class, 'updateMfaKey'])
+    ->name('api_otpkey_update_otp_key')
+  ->middleware([config('vendor-Mfa.auth_middleware')]);
 

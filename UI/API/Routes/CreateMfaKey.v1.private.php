@@ -1,8 +1,8 @@
 <?php
 
 /**
- * @apiGroup           OtpKey
- * @apiName            createOtpKey
+ * @apiGroup           MfaKey
+ * @apiName            createMfaKey
  *
  * @api                {POST} /v1/otpkeys Endpoint title here..
  * @apiDescription     Endpoint description here..
@@ -22,7 +22,7 @@
 use App\Containers\Vendor\Mfa\UI\API\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
-Route::post('mfakeys', [Controller::class, 'createOtpKey'])
+Route::post('mfakeys', [Controller::class, 'createMfaKey'])
       ->name('api_otpkey_create_otp_key')
       ->middleware([config('vendor-Mfa.auth_middleware')]);
 

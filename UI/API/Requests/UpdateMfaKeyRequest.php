@@ -4,7 +4,7 @@ namespace App\Containers\Vendor\Mfa\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
-class UpdateOtpKeyRequest extends Request
+class UpdateMfaKeyRequest extends Request
 {
       /**
        * Define which Roles and/or Permissions has access to this request.

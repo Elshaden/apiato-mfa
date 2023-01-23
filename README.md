@@ -39,11 +39,11 @@ $user-> HasOtp();
 This will return the full record of the Otp Key.
 
 ```
-object   // OtpKey
-id          // Hashed OtpKey Id
+object   // MfaKey
+id          // Hashed MfaKey Id
 mfable_id
 mfable_type
-code      // Base64 OtpKey Code
+code      // Base64 MfaKey Code
 qr_code    // QR Code Image
 created_at
 updated_at
@@ -54,7 +54,7 @@ updated_at
 #### To Create New MFA key
 ##### Assuming the Model using the HasMfaTrati is the user Nodel
 ````
-$user-> CreateOtpKey();
+$user-> CreateMfaKey();
 ````
 This will return :
 The Otp_key Record created
@@ -102,12 +102,12 @@ if You specify the parameter calss in any call the action will be taken on the c
 Classes must be set in the config file, example ***Customer*** , must be specified in the config file
 if you do not specify any calss, the action ill be made on the default calss, mostly User
 
-| Endpoint                         | Method |             Parameteres |                                   Usage | Response
-|:---------------------------------|-------:|------------------------:|----------------------------------------:| :---:
-|  **/mfakeys**                    |   POST |     id, (optional)class |                  Creates New User Token |  int "id",  string "code",   image "qr_code" ``
- |  **/validate-mfa**               |   POST | id , pin , slots, class |                  Validates 6 digits pin | ``bool "result" ``
- |  **/generate-pin/{id}/{class?}** |    GET |                         |                  Generates 6 Digits pin | ``int "code"   ``
- |  **/mfakeys/{id}/{class?}**      |  PATCH |                         | Create New Mfa and revokes the old one | ``int "code"   ``
+| Endpoint                         | Method |             Parameteres |                                   Usage | Response|
+|:---------------------------------|-------:|------------------------:|----------------------------------------:| :---:|
+|  **/mfakeys**                    |   POST |     id, (optional)class |                  Creates New User Token |  int "id",  string "code",   image "qr_code" ``|
+|  **/validate-mfa**               |   POST | id , pin , slots, class |                  Validates 6 digits pin | ``bool "result" ``|
+|  **/generate-pin/{id}/{class?}** |    GET |                         |                  Generates 6 Digits pin | ``int "code"   ``|
+|  **/mfakeys/{id}/{class?}**      |  PATCH |                         | Create New Mfa and revokes the old one | ``int "code"   ``|
 
 In Addition to Find, delete and Update OtpToken for any user.
 

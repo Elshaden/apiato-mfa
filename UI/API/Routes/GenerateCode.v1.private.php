@@ -1,8 +1,8 @@
 <?php
 
 /**
- * @apiGroup           OtpKey
- * @apiName            createOtpKey
+ * @apiGroup           MfaKey
+ * @apiName            createMfaKey
  *
  * @api                {POST} /v1/otpkeys Endpoint title here..
  * @apiDescription     Endpoint description here..

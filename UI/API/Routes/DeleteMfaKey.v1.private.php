@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @apiGroup           OtpKey
- * @apiName            findOtpKeyById
+ * @apiGroup           MfaKey
+ * @apiName            deleteMfaKey
  *
- * @api                {GET} /v1/otpkeys/:id Endpoint title here..
+ * @api                {DELETE} /v1/otpkeys/:id Endpoint title here..
  * @apiDescription     Endpoint description here..
  *
  * @apiVersion         1.0.0
@@ -22,7 +22,7 @@
 use App\Containers\Vendor\Mfa\UI\API\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
-Route::post('validate-mfa', [Controller::class, 'ValidateOtpKeyByUserId'])
-    ->name('api_otpkey_validate_otp_key_by_user_id')
-  ->middleware([ config('vendor-Mfa.auth_middleware')]);
+Route::delete('otpkeys/{id}/{class?}', [Controller::class, 'DeleteMfa'])
+    ->name('api_otpkey_delete_otp_key')
+    ->middleware([config('vendor-Mfa.auth_middleware')]);
 

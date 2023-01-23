@@ -5,13 +5,13 @@ namespace App\Containers\Vendor\Mfa\Models;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Models\Model;
 
-class OtpKey extends Model
+class MfaKey extends Model
 {
 
-
+      protected $table = 'mfa_keys';
 
       protected $fillable = [
-            'uuid',
+
             'code',
             'qr_code',
             'active'

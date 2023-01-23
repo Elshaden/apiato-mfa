@@ -6,7 +6,7 @@ use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 
 
-class CreateOtpKeyAction extends Action
+class CreateMfaKeyAction extends Action
 {
      public function run(Request $request)
       {
@@ -17,7 +17,7 @@ class CreateOtpKeyAction extends Action
             ]);
             $Mfabel = app(GetMfableClass::class)->run($data);
 
-            $Mfa = $Mfabel->CreateOtpKey();
+            $Mfa = $Mfabel->CreateMfaKey();
             return $Mfa;
 
       }

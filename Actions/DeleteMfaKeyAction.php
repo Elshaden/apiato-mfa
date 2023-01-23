@@ -5,7 +5,7 @@ namespace App\Containers\Vendor\Mfa\Actions;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 
-class DeleteOtpKeyAction extends Action
+class DeleteMfaKeyAction extends Action
 {
     public function run(Request $request)
     {
@@ -17,6 +17,6 @@ class DeleteOtpKeyAction extends Action
               $Mfabel = app(GetMfableClass::class)->run($data);
               $Mfabel->DeleteKey();
               return $Mfabel;
-      //  return app(DeleteOtpKeyTask::class)->run($request->id);
+      //  return app(DeleteMfaKeyTask::class)->run($request->id);
     }
 }

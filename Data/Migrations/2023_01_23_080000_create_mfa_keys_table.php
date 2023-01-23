@@ -2,23 +2,21 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateOtpKeysTable extends Migration
-{
+return new class extends Migration {
       /**
        * Run the migrations.
        */
       public function up(): void
       {
-            Schema::create('otp_keys', function (Blueprint $table) {
+            Schema::create('mfa_keys', function (Blueprint $table) {
                   $table->id();
-                  $table->uuid()->unique()->index();
                   $table->morphs('mfable');
                   $table->text('code');
                   $table->text('qr_code');
                   $table->boolean('active')->default(1);
                   $table->timestamps();
-
             });
       }
 
@@ -27,6 +25,6 @@ class CreateOtpKeysTable extends Migration
        */
       public function down(): void
       {
-            Schema::dropIfExists('otp_keys');
+            Schema::dropIfExists('mfa_keys');
       }
-}
+};

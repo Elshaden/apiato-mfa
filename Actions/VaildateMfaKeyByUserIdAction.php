@@ -6,7 +6,7 @@ use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 
 
-class VaildateOtpKeyByUserIdAction extends Action
+class VaildateMfaKeyByUserIdAction extends Action
 {
       public function run(Request $request)
       {

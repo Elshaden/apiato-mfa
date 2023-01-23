@@ -2,16 +2,16 @@
 
 namespace App\Containers\Vendor\Mfa\Tasks;
 
-use App\Containers\Vendor\Mfa\Data\Repositories\OtpKeyRepository;
+use App\Containers\Vendor\Mfa\Data\Repositories\MfaKeyRepository;
 use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
 
-class CreateOtpKeyTask extends Task
+class CreateMfaKeyTask extends Task
 {
-    protected OtpKeyRepository $repository;
+    protected MfaKeyRepository $repository;
 
-    public function __construct(OtpKeyRepository $repository)
+    public function __construct(MfaKeyRepository $repository)
     {
         $this->repository = $repository;
     }

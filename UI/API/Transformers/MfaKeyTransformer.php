@@ -2,10 +2,10 @@
 
 namespace App\Containers\Vendor\Mfa\UI\API\Transformers;
 
-use App\Containers\Vendor\Mfa\Models\OtpKey;
+use App\Containers\Vendor\Mfa\Models\MfaKey;
 use App\Ship\Parents\Transformers\Transformer;
 
-class OtpKeyTransformer extends Transformer
+class MfaKeyTransformer extends Transformer
 {
 
       /**
@@ -22,7 +22,7 @@ class OtpKeyTransformer extends Transformer
 
       ];
 
-      public function transform(OtpKey $otpkey): array
+      public function transform(MfaKey $otpkey): array
       {
             $response = [
                   'object' => 'Mfa',

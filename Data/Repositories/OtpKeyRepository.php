@@ -4,7 +4,7 @@ namespace App\Containers\Vendor\Mfa\Data\Repositories;
 
 use App\Ship\Parents\Repositories\Repository;
 
-class OtpKeyRepository extends Repository
+class MfaKeyRepository extends Repository
 {
     /**
      * @var array

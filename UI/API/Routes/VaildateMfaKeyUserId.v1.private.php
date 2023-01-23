@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @apiGroup           OtpKey
- * @apiName            updateOtpKey
+ * @apiGroup           MfaKey
+ * @apiName            findMfaKeyById
  *
- * @api                {PATCH} /v1/otpkeys/:id Endpoint title here..
+ * @api                {GET} /v1/otpkeys/:id Endpoint title here..
  * @apiDescription     Endpoint description here..
  *
  * @apiVersion         1.0.0
@@ -22,7 +22,7 @@
 use App\Containers\Vendor\Mfa\UI\API\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
-Route::patch('mfakeys/{id}/{class?}', [Controller::class, 'updateOtpKey'])
-    ->name('api_otpkey_update_otp_key')
-  ->middleware([config('vendor-Mfa.auth_middleware')]);
+Route::post('validate-mfa', [Controller::class, 'ValidateMfaKeyByUserId'])
+    ->name('api_otpkey_validate_otp_key_by_user_id')
+  ->middleware([ config('vendor-Mfa.auth_middleware')]);
 

@@ -3,44 +3,44 @@
 namespace App\Containers\Vendor\Mfa\UI\API\Controllers;
 
 use App\Containers\Vendor\Mfa\Actions\GenerateOtpCodeAction;
-use App\Containers\Vendor\Mfa\Actions\VaildateOtpKeyByUserIdAction;
-use App\Containers\Vendor\Mfa\UI\API\Requests\CreateOtpKeyRequest;
-use App\Containers\Vendor\Mfa\UI\API\Requests\DeleteOtpKeyRequest;
+use App\Containers\Vendor\Mfa\Actions\VaildateMfaKeyByUserIdAction;
+use App\Containers\Vendor\Mfa\UI\API\Requests\CreateMfaKeyRequest;
+use App\Containers\Vendor\Mfa\UI\API\Requests\DeleteMfaKeyRequest;
 use App\Containers\Vendor\Mfa\UI\API\Requests\GenerateOtpCodeRequest;
-use App\Containers\Vendor\Mfa\UI\API\Requests\UpdateOtpKeyRequest;
-use App\Containers\Vendor\Mfa\UI\API\Requests\ValidateOtpKeyByUserIdRequest;
-use App\Containers\Vendor\Mfa\UI\API\Transformers\OtpKeyTransformer;
-use App\Containers\Vendor\Mfa\Actions\CreateOtpKeyAction;
-use App\Containers\Vendor\Mfa\Actions\UpdateOtpKeyAction;
-use App\Containers\Vendor\Mfa\Actions\DeleteOtpKeyAction;
+use App\Containers\Vendor\Mfa\UI\API\Requests\UpdateMfaKeyRequest;
+use App\Containers\Vendor\Mfa\UI\API\Requests\ValidateMfaKeyByUserIdRequest;
+use App\Containers\Vendor\Mfa\UI\API\Transformers\MfaKeyTransformer;
+use App\Containers\Vendor\Mfa\Actions\CreateMfaKeyAction;
+use App\Containers\Vendor\Mfa\Actions\UpdateMfaKeyAction;
+use App\Containers\Vendor\Mfa\Actions\DeleteMfaKeyAction;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
 
 class Controller extends ApiController
 {
 
-    public function createOtpKey(CreateOtpKeyRequest $request)
+    public function createMfaKey(CreateMfaKeyRequest $request)
     {
-        $otpkey = app(CreateOtpKeyAction::class)->run($request);
-        return $this->transform($otpkey, OtpKeyTransformer::class,[],[],'MfaKey');
+        $otpkey = app(CreateMfaKeyAction::class)->run($request);
+        return $this->transform($otpkey, MfaKeyTransformer::class,[],[],'MfaKey');
     }
 
-    public function ValidateOtpKeyByUserId(ValidateOtpKeyByUserIdRequest $request){
+    public function ValidateMfaKeyByUserId(ValidateMfaKeyByUserIdRequest $request){
 
-          $Valid = app(VaildateOtpKeyByUserIdAction::class)->run($request);
+          $Valid = app(VaildateMfaKeyByUserIdAction::class)->run($request);
           return response()->json(['result'=>$Valid], 200);
     }
 
 
-    public function updateOtpKey(UpdateOtpKeyRequest $request): array
+    public function updateMfaKey(UpdateMfaKeyRequest $request): array
     {
-        $otpkey = app(UpdateOtpKeyAction::class)->run($request);
-        return $this->transform($otpkey, OtpKeyTransformer::class);
+        $otpkey = app(UpdateMfaKeyAction::class)->run($request);
+        return $this->transform($otpkey, MfaKeyTransformer::class);
     }
 
-    public function DeleteMfa(DeleteOtpKeyRequest $request): JsonResponse
+    public function DeleteMfa(DeleteMfaKeyRequest $request): JsonResponse
     {
-        app(DeleteOtpKeyAction::class)->run($request);
+        app(DeleteMfaKeyAction::class)->run($request);
         return $this->noContent();
     }
 

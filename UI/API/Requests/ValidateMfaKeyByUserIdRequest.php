@@ -4,7 +4,7 @@ namespace App\Containers\Vendor\Mfa\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
-class DeleteOtpKeyRequest extends Request
+class ValidateMfaKeyByUserIdRequest extends Request
 {
     /**
      * Define which Roles and/or Permissions has access to this request.
@@ -18,7 +18,7 @@ class DeleteOtpKeyRequest extends Request
      * Id's that needs decoding before applying the validation rules.
      */
     protected array $decode = [
-//        'id',
+      //  'id',
     ];
 
     /**
@@ -26,8 +26,7 @@ class DeleteOtpKeyRequest extends Request
      * validation rules on them and allows accessing them like request data.
      */
     protected array $urlParameters = [
-        'id',
-          'class',
+      //  'id',
     ];
 
     /**
@@ -36,7 +35,10 @@ class DeleteOtpKeyRequest extends Request
     public function rules(): array
     {
         return [
-            'id' => 'required'
+            'id' => 'required',
+            'pin'=>'required|numeric|digits:6',
+            'class'=> 'in_array:'. config('vendor-Mfa.classes'),
+            'minutes' => 'sometimes|integer|max:5',
         ];
     }
 

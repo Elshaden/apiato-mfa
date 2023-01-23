@@ -6,11 +6,11 @@ namespace App\Containers\Vendor\Mfa\Traits;
 
 use App\Containers\Vendor\Mfa\Classes\QRGenerator;
 use App\Containers\Vendor\Mfa\Classes\TwoFactorAuthenticationProvider as TwoMFA;
-use App\Containers\Vendor\Mfa\Models\OtpKey;
-use App\Containers\Vendor\Mfa\Tasks\CreateOtpKeyTask;
-use App\Containers\Vendor\Mfa\Tasks\FindOtpKeyByUserIdTask;
-use App\Containers\Vendor\Mfa\Tasks\UpdateOtpKeyTask;
-use App\Containers\Vendor\OtpKey\Classes\TwoFactorAuthenticationProvider as MFA;
+use App\Containers\Vendor\Mfa\Models\MfaKey;
+use App\Containers\Vendor\Mfa\Tasks\CreateMfaKeyTask;
+use App\Containers\Vendor\Mfa\Tasks\FindMfaKeyByUserIdTask;
+use App\Containers\Vendor\Mfa\Tasks\UpdateMfaKeyTask;
+use App\Containers\Vendor\MfaKey\Classes\TwoFactorAuthenticationProvider as MFA;
 use App\Ship\Exceptions\NotFoundException;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Lcobucci\JWT\Exception;
@@ -19,13 +19,13 @@ trait HasMfaKeyTrait
 {
       public function mfaKey(): MorphOne
       {
-            return $this->morphOne(OtpKey::class, 'mfable', 'mfable_type', 'mfable_id');
+            return $this->morphOne(MfaKey::class, 'mfable', 'mfable_type', 'mfable_id');
       }
 
       public function HasOtp()
       {
             try {
-                  return $this->mfaKey()->exists()?$this->mfaKey : false;//app(FindOtpKeyByUserIdTask::class)->run($this->id);
+                  return $this->mfaKey()->exists()?$this->mfaKey : false;//app(FindMfaKeyByUserIdTask::class)->run($this->id);
             } catch (Exception $e) {
                   return false;
             }
@@ -33,7 +33,7 @@ trait HasMfaKeyTrait
 
       }
 
-      public function CreateOtpKey()
+      public function CreateMfaKey()
       {
             if ($this->HasOtp()) return $this->UpdateKey($this->HasOtp());
 
@@ -90,7 +90,7 @@ trait HasMfaKeyTrait
             return $Check;
       }
 
-      private function GetResponse(OtpKey $OtpRecord)
+      private function GetResponse(MfaKey $OtpRecord)
       {
             return [
                   'code' => $OtpRecord->code,
@@ -126,7 +126,7 @@ trait HasMfaKeyTrait
 
                   return app(TwoMFA::class)->GenerateValidOTP(decrypt($MfaKey->code));
             } else{
-                  $record =  $this->CreateOtpKey();
+                  $record =  $this->CreateMfaKey();
                   return app(TwoMFA::class)->GenerateValidOTP(decrypt($record->code));
             }
       }

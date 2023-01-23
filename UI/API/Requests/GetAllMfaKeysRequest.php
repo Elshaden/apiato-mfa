@@ -4,7 +4,7 @@ namespace App\Containers\Vendor\Mfa\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
-class CreateOtpKeyRequest extends Request
+class GetAllMfaKeysRequest extends Request
 {
     /**
      * Define which Roles and/or Permissions has access to this request.
@@ -35,8 +35,7 @@ class CreateOtpKeyRequest extends Request
     public function rules(): array
     {
         return [
-            'id' => 'required',
-            'class'=> 'in_array:'. config('vendor-Mfa.classes'),
+            // 'id' => 'required'
         ];
     }
 
