@@ -19,11 +19,13 @@ class GetMfableClass
             }
 
             try {
-                  return app()->make($Class)->find($data['id']);
+
+                  return app()->make($Class)->where(config('vendor-Mfa.request_key') , $data['key'])
+                        ?->first()
+                        ??throw new NotFoundException('Mfable Not Found');
             } catch (\Exception $e) {
                   throw new NotFoundException('Mfable Not Found');
             }
-
 
 
       }

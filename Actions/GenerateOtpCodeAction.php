@@ -12,7 +12,7 @@ class GenerateOtpCodeAction extends Action
       public function run(Request $request)
       {
             $data = $request->sanitizeInput([
-                  'id',
+                'key',
                   'class',
 
             ]);

@@ -49,6 +49,14 @@ return [
             'Customer' => 'App\Containers\AppSection\Customer\Models\Customer',
       ],
 
+      /*
+         *
+         * The request Key matches the filed in the mfable model
+         * This will be used in Model::where($requestKey, $requestValue)->first();
+         * Normally it should be the id of the mfable model
+         * you can change to anything else
+         */
+      'request_key' => 'id',
 
       /*
        *

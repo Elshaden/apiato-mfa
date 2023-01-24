@@ -18,7 +18,7 @@ class ValidateMfaKeyByUserIdRequest extends Request
      * Id's that needs decoding before applying the validation rules.
      */
     protected array $decode = [
-      //  'id',
+      //'key',
     ];
 
     /**
@@ -26,7 +26,7 @@ class ValidateMfaKeyByUserIdRequest extends Request
      * validation rules on them and allows accessing them like request data.
      */
     protected array $urlParameters = [
-      //  'id',
+      //'key',
     ];
 
     /**
