@@ -13,7 +13,7 @@ class GetMfableClass
 
             if (isset($data['class']) && $data['class']) {
 
-                  $Class = $data['class'];
+                  $Class = config('vendor-Mfa.mfable_types')[$data['class']];
             } else {
                   $Class = config('vendor-Mfa.default_mfable');
             }

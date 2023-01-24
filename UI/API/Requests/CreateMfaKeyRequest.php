@@ -36,7 +36,7 @@ class CreateMfaKeyRequest extends Request
     {
         return [
             'id' => 'required',
-            'class'=> 'in_array:'. config('vendor-Mfa.classes'),
+              'class'=> 'sometimes|in:'. implode(',',array_keys(config('vendor-Mfa.mfable_types'))),
         ];
     }
 

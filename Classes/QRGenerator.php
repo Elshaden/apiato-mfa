@@ -21,7 +21,7 @@ class QRGenerator
     {
         $svg = (new Writer(
             new ImageRenderer(
-                new RendererStyle(config('vendor-otpKey.QR_Code_size'), 0, null, null, Fill::uniformColor(new Rgb(255, 255, 255), new Rgb(45, 55, 72))),
+                new RendererStyle(config('vendor-Mfa.QR_Code_size'), 0, null, null, Fill::uniformColor(new Rgb(255, 255, 255), new Rgb(45, 55, 72))),
                 new SvgImageBackEnd
             )
         ))->writeString($URL);
